@@ -8,11 +8,20 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Minha loja</title>
-  </head>
+    <title>Minha loja!</title>
+
+
+
+ 
+</head>
+
+
   <body>
 
     <header>
+
+
+	
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#"> <b>Loja de Véiculos </b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +46,8 @@
           <a class="dropdown-item" href="/categoria/carros">Carros</a>
           <a class="dropdown-item" href="/categoria/motos">Motos</a>
           <a class="dropdown-item" href="#">Outros veículos</a>
+          
+
         </div>
       </li>
     </ul>
@@ -46,14 +57,25 @@
 
 <main role="main">
 
+<form action="/busca" method="GET">
+<input id="search" type="text" placeholder="O que você procura?">
+<input id="submit" type="submit" value="Buscar!">
 
-<h2>Produtos em Destaque!<h2>
-<div class="container">
 
-<a href="/produto/1">
-<img src="/images/corsa.jpg" width="200">
-</a>
-</div>
+
+{% for produto in produtos %}
+
+<h3>{{ produto.nome }}</h3>
+<img src="/images/{{ produto.imagem }}" width="300">
+<br />
+{{ produto.descricao }}
+<br /><br />
+
+R$ {{ produto.preco }}
+<br />
+<a href="/produto/{{ produto.id }}">Ver Detalhes</a>
+
+{% endfor %}
 
 
 

@@ -100,6 +100,21 @@ class Banco {
 		$cliente = $this->fetchCliente($linha);
 
 		return $cliente;
+
+	
+	}
+
+	public function getProdutosAleatorio() {
+		$strsql = "select p.* from produtos as p order by rand() limit 3";
+
+		$resultados = $this->getResultsBD($strsql);
+	
+		$produtos = array();
+		while ($linha = $resultados->fetch_object()) {
+			$produtos[] = $this->fetchProduto($linha);
+		}
+
+		return $produtos;
 	}
 
 }

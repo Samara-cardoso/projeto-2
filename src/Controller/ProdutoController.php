@@ -25,6 +25,9 @@ class ProdutoController extends AbstractController {
 	* @Route("/categoria/{nome}")
 	*/
 	public function categoria($nome) {
+
+
+
 		$banco = new Banco();
 		$produtos = $banco->getProdutosByCategoria($nome);
 
@@ -38,6 +41,12 @@ class ProdutoController extends AbstractController {
 	*/
 	public function buscar() {
 		return $this->render('produto/buscar.html.twig', [
+		$banco = new Banco();
+		$produtos = $banco->getProdutosById($nome);
+
+		return $this->render('produto/categoria.html.twig', [
+			'produtos' => $produtos    
+		
 					    
 		]);
 	}

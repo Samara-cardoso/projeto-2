@@ -14,7 +14,11 @@ class LojaController extends AbstractController {
 	* @Route("/")
 	*/
 	public function index() {
+		$banco = new Banco();
+		$produtos = $banco->getProdutosAleatorio();
+
 		return $this->render('loja/index.html.twig', [
+			'produtos' => $produtos  
 					    
 		]);
 	}
@@ -90,6 +94,12 @@ class LojaController extends AbstractController {
 		$carrinho = $session->get('carrinho');
 		if (is_array($carrinho) && array_key_exists($produto->getId(), $carrinho)) {
 			$quantidade = $carrinho[$produto->getId()]['quantidade'] + 1;
+
+
+
+
+
+
 			$totalItem = $quantidade * $produto->getPreco();
 			$carrinho[$produto->getId()]['quantidade'] = $quantidade;
 			$carrinho[$produto->getId()]['total'] = $totalItem;
