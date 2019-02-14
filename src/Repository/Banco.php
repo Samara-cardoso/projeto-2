@@ -7,7 +7,7 @@ use App\Entity\Cliente;
 class Banco {
 	private function conectaBD() {
 		$host = 'localhost';
-		$user = 'root';
+		$user = 'projeto-user';
 		$pass = 'senha';
 		$base = 'verao-2019';
 		$banco = new \mysqli($host, $user, $pass, $base);
